@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { fromJS } from 'immutable';
 import createHistory from 'history/createHashHistory';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { persistStore } from 'redux-persist';
 import immutableTransform from 'redux-persist-transform-immutable';
 
 import routes from './routes';
 import Root from './Root';
 import configureStore from './redux/configureStore';
+import persistStore from './redux/persistStore';
 
 let initialState = {};
 
@@ -34,23 +34,15 @@ const history = syncHistoryWithStore(hashHistory, store);
 //
 // This value can be used like the <PersistGate /> from redux-persist(v5) to wait
 // for the store before rendering the app.
-let _persistor = null;
-const rehydrated = new Promise((resolve) => {
-  _persistor = persistStore(
-    store,
-    // Configuration for persistence
-    {
-      transforms: [immutableTransform()],
-      whitelist: ['example'],
-      blacklist: 'routing',
-    },
-    resolve
-  );
-});
-_persistor.rehydrated = rehydrated;
-const persistor = _persistor;
-
-console.log(persistor);
+const persistor = persistStore(
+  store,
+  // Configuration for persistence
+  {
+    transforms: [immutableTransform()],
+    whitelist: ['example'],
+    blacklist: 'routing',
+  }
+);
 
 // Render the React application to the DOM
 // Root component is to bootstrap Provider, Router and DevTools
