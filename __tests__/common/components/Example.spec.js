@@ -36,7 +36,7 @@ describe('ExampleView', () => {
 
     expect(el.length).toEqual(1)
     expect(el.find('.exampleOutput').length).toEqual(1)
-    expect(el.find('h1').find('span').text()).toEqual('Started')
+    expect(el.find('h1').find('span').text()).toEqual('Started!')
   })
 
   it('should render a default motd message when none is present', () => {
