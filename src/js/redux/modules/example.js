@@ -1,5 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { Map } from 'immutable';
+import { REHYDRATE } from 'redux-persist/constants';
 
 import type { exampleType } from '../../common/types/example'
 
@@ -23,6 +24,9 @@ export const actions = {
 };
 
 export const reducers = {
+  [REHYDRATE]: (state, { payload }) => {
+    console.log(state, payload); return state.merge(payload.example)
+  },
   [UPDATE_EXAMPLE]: (state, { payload }) =>
     state.merge({
       ...payload,

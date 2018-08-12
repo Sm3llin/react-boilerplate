@@ -16,9 +16,8 @@ class Example extends PureComponent {
           <pre>
             {JSON.stringify(result.toJS(), undefined, 2)}
           </pre>
+          <button onClick={() => this.props.getAwesomeCode()}>start exampleSaga</button>
         </div>
-
-
       );
     }
     return <div />;
