@@ -30,11 +30,31 @@ const hashHistory = createHistory();
 const store = configureStore(initialState, hashHistory);
 const history = syncHistoryWithStore(hashHistory, store);
 
-persistStore(store, { transforms: [immutableTransform()], whitelist: ['example'], blacklist: 'routing' });
+// Create a persistor for determining when the store has been REHYDRATE'd
+//
+// This value can be used like the <PersistGate /> from redux-persist(v5) to wait
+// for the store before rendering the app.
+let _persistor = null;
+const rehydrated = new Promise((resolve) => {
+  _persistor = persistStore(
+    store,
+    // Configuration for persistence
+    {
+      transforms: [immutableTransform()],
+      whitelist: ['example'],
+      blacklist: 'routing',
+    },
+    resolve
+  );
+});
+_persistor.rehydrated = rehydrated;
+const persistor = _persistor;
+
+console.log(persistor);
 
 // Render the React application to the DOM
 // Root component is to bootstrap Provider, Router and DevTools
 ReactDOM.render(
-  <Root history={history} routes={routes} store={store} />,
+  <Root history={history} routes={routes} store={store} persistor={persistor} />,
   document.getElementById('app-container')
 );

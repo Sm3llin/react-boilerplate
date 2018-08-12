@@ -4,6 +4,20 @@ import { Provider } from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 
 export default class Root extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rehydrated: false,
+    }
+  }
+
+  componentDidMount() {
+    this.props.persistor.rehydrated.then(() => {
+      this.setState({ rehydrated: true })
+    })
+  }
+
   get content() {
     return (
       <Router>
@@ -13,11 +27,16 @@ export default class Root extends Component {
   }
 
   render() {
+    if (this.state.rehydrated) {
+      return (
+        <Provider store={this.props.store}>
+          {this.content}
+        </Provider>
+      );
+    }
     return (
-      <Provider store={this.props.store}>
-        {this.content}
-      </Provider>
-    );
+      <div />
+    )
   }
 }
 
