@@ -7,6 +7,12 @@ const resultSelector = createSelector(
   payload => payload.get('result')
 );
 
+const motdSelector = createSelector(
+  exampleDataSelector,
+  payload => payload.get('motd')
+);
+
 export const exampleSelector = state => ({
   result: resultSelector(state),
+  motd: motdSelector(state),
 });

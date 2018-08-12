@@ -31,7 +31,9 @@ class ExampleView extends Component {
   }
 
   componentDidMount() {
-    this.props.getAwesomeCode();
+    if (!this.props.example.result) {
+      this.props.getAwesomeCode();
+    }
   }
 
   render() {

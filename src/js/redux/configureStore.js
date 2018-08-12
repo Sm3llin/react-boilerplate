@@ -1,5 +1,6 @@
 import createSagaMiddleware from 'redux-saga';
 import { routerMiddleware } from 'react-router-redux';
+import { autoRehydrate } from 'redux-persist'
 import {
   applyMiddleware,
   compose,
@@ -20,7 +21,7 @@ export default function configureStore(initialState, history) {
 
   const middleware = applyMiddleware(sagaMiddleware, routerMiddleware(history));
 
-  const composedStoreEnhancer = compose(middleware, reduxDevTool());
+  const composedStoreEnhancer = compose(middleware, reduxDevTool(), autoRehydrate());
 
   const store = composedStoreEnhancer(createStore)(rootReducer, initialState);
 

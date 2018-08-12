@@ -54,7 +54,7 @@ __Note:__ This boilerplate is not to show case how to code in React / Redux, it 
 Features
 
 * React 16
-* Redux
+* Redux (with [Redux-Persist-v4](https://github.com/rt2zz/redux-persist/tree/v4) support)
 * Saga
 * ES6 / ES7
 * ImmutableJS
