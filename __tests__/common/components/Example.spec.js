@@ -36,7 +36,7 @@ describe('ExampleView', () => {
 
     expect(el.length).toEqual(1)
     expect(el.find('.exampleOutput').length).toEqual(1)
-    expect(el.find('h1').find('span').text()).toEqual('Started')
+    expect(el.find('Header').find('span').text()).toEqual('Started')
   })
 
   it('should render a default motd message when none is present', () => {
@@ -44,7 +44,7 @@ describe('ExampleView', () => {
       <Example {...fixture} />
     )
 
-    expect(el.find('h1').find('span').text()).toEqual('Started')
+    expect(el.find('Header').find('span').text()).toEqual('Started')
   })
 
   it('should render the motd if store contains a string', () => {
@@ -52,6 +52,6 @@ describe('ExampleView', () => {
       <Example {...motdFixture} />
     )
 
-    expect(el.find('h1').find('span').text()).toEqual(motdFixture.example.motd)
+    expect(el.find('Header').find('span').text()).toEqual(motdFixture.example.motd)
   })
 })

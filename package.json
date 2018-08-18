@@ -98,7 +98,9 @@
     "redux-persist": "^4.0.0",
     "redux-persist-transform-immutable": "^4.1.0",
     "redux-saga": "^0.16.0",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.2"
   },
   "jest": {
     "verbose": true,

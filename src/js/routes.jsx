@@ -16,12 +16,11 @@ const JustAnotherPage = () => (
   </div>
 );
 
-const HeaderWithRouter = withRouter(props => <Header {...props} />);
+const HeaderWithRouter = withRouter((props) => <Header {...props} />);
 
 module.exports = (
   <div className="container">
     <HeaderWithRouter />
-    <hr />
     <div className="container__content">
       <Switch>
         <Route exact path="/" component={ExampleRouteHandler} />
