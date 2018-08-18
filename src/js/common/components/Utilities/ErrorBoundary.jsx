@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Segment } from 'semantic-ui-react';
 
 const style = {
   padding: '.75rem 1.25rem',
@@ -27,9 +28,9 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={style}>
+        <Segment raised style={style}>
           Something is going wrong!! This error is caught by ErrorBoundary feature in React 16 \o/
-        </div>
+        </Segment>
       );
     }
 

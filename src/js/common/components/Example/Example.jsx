@@ -31,9 +31,9 @@ class Example extends PureComponent {
             </Message>
             <p>The following JSON are showing contents coming from Redux, Saga and Config.</p>
             <pre>
-              {JSON.stringify(result.toJS(), undefined, 2)}
+              <code>{JSON.stringify(result.toJS(), undefined, 2)}</code>
             </pre>
-            <Button onClick={this.getAwesomeCode}>start exampleSaga</Button>
+            <Button primary onClick={this.getAwesomeCode}>start exampleSaga</Button>
           </Segment>
         </Fragment>
       );

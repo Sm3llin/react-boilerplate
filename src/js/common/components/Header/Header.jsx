@@ -1,16 +1,12 @@
-import React, {Fragment, PureComponent} from 'react';
-import { withRouter } from 'react-router-dom';
-
+import React, { Fragment, PureComponent } from 'react';
 import { Menu, Container } from 'semantic-ui-react';
 
 import './Header.css';
 
 class Header extends PureComponent {
-  goto = ({ target }) => {
-    const path = target.getAttribute('path');
-
-    if (this.props.location.pathname !== path) {
-      this.props.history.push(path)
+  goto = (_, data) => {
+    if (this.props.location.pathname !== data.path) {
+      this.props.history.push(data.path)
     }
   };
 
@@ -26,7 +22,7 @@ class Header extends PureComponent {
         <div>
           <Menu fixed="top">
             <Container>
-              <Menu.Item as="a" header>
+              <Menu.Item as="a" path="/" onClick={this.goto} header>
                 Project Name
               </Menu.Item>
               {routes.map((route) => {
@@ -44,7 +40,7 @@ class Header extends PureComponent {
             </Container>
           </Menu>
         </div>
-        <div style={{ marginTop: '5em' }} />
+        <div style={{ paddingTop: '5em' }} />
       </Fragment>
     )
   }
