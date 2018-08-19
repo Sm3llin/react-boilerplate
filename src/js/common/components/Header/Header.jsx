@@ -20,7 +20,7 @@ class Header extends PureComponent {
     return (
       <Fragment>
         <div>
-          <Menu fixed="top">
+          <Menu fixed="top" style={{ marginLeft: '150px' }}>
             <Container>
               <Menu.Item as="a" path="/" onClick={this.goto} header>
                 Project Name
@@ -40,7 +40,6 @@ class Header extends PureComponent {
             </Container>
           </Menu>
         </div>
-        <div style={{ paddingTop: '5em' }} />
       </Fragment>
     )
   }
